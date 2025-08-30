@@ -1,0 +1,21 @@
+.navbar {
+
+}
+
+.navList {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    gap: 16px;
+    margin-right: 50px;
+}
+
+.navLink {
+    font-size: 24px;
+    color: #333;
+    text-decoration: none;
+}
+
+.navLink:hover {
+    text-decoration: underline;
+}
