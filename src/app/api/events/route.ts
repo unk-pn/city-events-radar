@@ -9,7 +9,6 @@ export const GET = async (request: Request) => {
     const startDate = requestUrl.searchParams.get("startDate") || "";
     const endDate = requestUrl.searchParams.get("endDate") || "";
     const category = requestUrl.searchParams.get("category") || "";
-    const sort = requestUrl.searchParams.get("sort") || "";
 
     const baseUrl = process.env.TICKETMASTER_URL;
 
