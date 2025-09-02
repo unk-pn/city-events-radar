@@ -11,6 +11,7 @@ export const useEvents = () => {
     const error = useAppSelector(state => state.events.error)
     const hasMore = useAppSelector(state => state.events.hasMore)
     const filters = useAppSelector(state => state.events.filters);
+    const currentEvent = useAppSelector((state) => state.events.currentEvent);
 
     return {
         dispatch, 
@@ -18,6 +19,7 @@ export const useEvents = () => {
         loading,
         error,
         hasMore,
-        filters
+        filters,
+        currentEvent,
     }
 }

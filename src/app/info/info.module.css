@@ -1,0 +1,198 @@
+.infoPage {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+}
+
+.infoPageContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.infoContainer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.infoHeader {
+  text-align: center;
+  margin-bottom: 48px;
+  padding: 16px 0 ;
+}
+
+.infoTitle {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: #3b82f6;
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+
+.infoSubtitle {
+  font-size: 1.25rem;
+  color: #d1d5db;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.infoContent {
+  display: grid;
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.infoSection {
+  background: rgb(23, 34, 57);
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  border: 1px solid #f3f4f6;
+  transition: all 300ms ease-in-out;
+}
+
+.infoSection:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.sectionIcon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.ticketmasterLink {
+  color: #9ec7ff;
+  text-decoration: none;
+}
+
+.ticketmasterLink:hover {
+  color: #3b82f6;
+  text-decoration: underline;
+}
+
+.infoSection h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #f9fafb;
+  margin-bottom: 16px;
+}
+
+.infoSection p {
+  color: #d1d5db;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.statsSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin: 48px 0;
+  padding: 32px 32px 0;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+}
+
+.statNumber {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.statLabel {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.statsNote {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  margin-top: -16px;
+  grid-column: 1 / -1;
+}
+
+.contactSection {
+  background: #111827;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px solid #f3f4f6;
+}
+
+.contactSection h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #d1d5db;
+  margin-bottom: 16px;
+}
+
+.contactSection p {
+  color: #d1d5db;
+  margin-bottom: 24px;
+}
+
+.contactInfo {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.1rem;
+  color: #d1d5db;
+}
+
+.contactItem a {
+    text-decoration: none;
+    color: #d1d5db;
+}
+
+.contactItem a:hover {
+    text-decoration: underline;
+}
+
+
+.contactIcon {
+  font-size: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .infoPage {
+    padding: 24px 16px;
+  }
+
+  .infoHeader {
+    padding: 24px 0;
+    margin-bottom: 32px;
+  }
+
+  .infoSection {
+    padding: 24px;
+  }
+
+  .statsSection {
+    grid-template-columns: 1fr;
+    padding: 24px;
+  }
+
+  .contactSection {
+    padding: 24px;
+  }
+
+  .contactInfo {
+    flex-direction: column;
+    gap: 16px;
+  }
+}

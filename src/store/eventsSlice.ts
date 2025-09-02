@@ -14,6 +14,7 @@ interface EventState {
   hasMore: boolean;
   filters: SearchFilters;
   totalElements: number;
+  currentEvent: Event | null;
 }
 
 interface ActionType {
@@ -30,6 +31,7 @@ const initialState: EventState = {
   hasMore: true,
   filters: {},
   totalElements: 0,
+  currentEvent: null,
 };
 
 export const fetchEvents = createAsyncThunk(
@@ -42,7 +44,15 @@ export const fetchEvents = createAsyncThunk(
       size: "20",
       ...(filters.keyword && { keyword: filters.keyword }),
       ...(filters.city && { city: filters.city }),
+      ...(filters.startDate && { startDate: filters.startDate }),
+      ...(filters.endDate && { endDate: filters.endDate }),
+      ...(filters.category && { category: filters.category }),
+      ...(filters.sort && { sort: filters.sort }),
     });
+
+    console.log("Fetching events with filters:", filters);
+    console.log("API URL:", `/api/events?${searchParams}`);
+
     const response = await fetch(`/api/events?${searchParams}`);
     if (!response.ok) throw new Error("Error while fetching");
 
@@ -58,6 +68,15 @@ export const fetchEvents = createAsyncThunk(
   }
 );
 
+export const FetchEventById = createAsyncThunk(
+  "events/FetchEventById",
+  async (eventId: string) => {
+    const response = await fetch(`/api/events/${eventId}`);
+    const data = await response.json();
+    return data;
+  }
+);
+
 const eventSlice = createSlice({
   name: "events",
   initialState,
@@ -65,9 +84,13 @@ const eventSlice = createSlice({
     clearError: (state) => {
       state.error = null;
     },
-    clearEvents: (state) => {
+    clearEvents: (
+      state,
+      action: PayloadAction<{ page: number; filters: SearchFilters }>
+    ) => {
       state.events = [];
-      state.page = 0;
+      state.page = action.payload.page;
+      state.filters = action.payload.filters;
       state.hasMore = true;
       state.totalElements = 0;
     },
@@ -107,6 +130,17 @@ const eventSlice = createSlice({
       .addCase(fetchEvents.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error?.message || "Failed to load events";
+      })
+      .addCase(FetchEventById.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(FetchEventById.fulfilled, (state, action) => {
+        state.loading = false;
+        state.currentEvent = action.payload;
+      })
+      .addCase(FetchEventById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error?.message || "Failed to load event";
       });
   },
 });

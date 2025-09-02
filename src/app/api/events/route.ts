@@ -4,6 +4,13 @@ export const GET = async (request: Request) => {
     const page = requestUrl.searchParams.get("page") || '0';
     const size = requestUrl.searchParams.get("size") || '20';
 
+    const keyword = requestUrl.searchParams.get("keyword") || '';
+    const city = requestUrl.searchParams.get('city') || '';
+    const startDate = requestUrl.searchParams.get("startDate") || "";
+    const endDate = requestUrl.searchParams.get("endDate") || "";
+    const category = requestUrl.searchParams.get("category") || "";
+    const sort = requestUrl.searchParams.get("sort") || "";
+
     const baseUrl = process.env.TICKETMASTER_URL;
 
     if (!baseUrl) {
@@ -12,7 +19,13 @@ export const GET = async (request: Request) => {
       );
     }
 
-    const finalUrl = `${baseUrl}&page=${page}&size=${size}`
+    let finalUrl = `${baseUrl}&page=${page}&size=${size}`
+
+    if (keyword) finalUrl += `&keyword=${keyword}`
+    if (city) finalUrl += `&city=${city}`;
+    if (startDate) finalUrl += `&startDate=${startDate}`;
+    if (endDate) finalUrl += `&endDate=${endDate}`;
+    if (category) finalUrl += `&classificationName=${encodeURIComponent(category)}`;
 
     const response = await fetch(finalUrl);
 

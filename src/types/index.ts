@@ -1,5 +1,3 @@
-// Основные типы для Ticketmaster API
-
 export interface TicketmasterResponse {
   _links?: Links;
   _embedded?: {
@@ -248,7 +246,6 @@ export interface Page {
   number: number;
 }
 
-// Утилитарные типы для приложения
 export interface EventsState {
   events: Event[];
   loading: boolean;
@@ -271,15 +268,12 @@ export interface SearchFilters {
   sort?: 'date' | 'name' | 'relevance';
 }
 
-// Тип для ошибок API
 export interface ApiError {
   error: string;
 }
 
-// Объединенный тип для ответа функции fetchEvents
 export type EventsApiResponse = TicketmasterResponse | ApiError;
 
-// Утилитарная функция для проверки типа ошибки
 export function isApiError(response: EventsApiResponse): response is ApiError {
   return 'error' in response;
 }

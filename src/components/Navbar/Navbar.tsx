@@ -1,27 +1,35 @@
-import React from 'react'
-import c from './Navbar.module.css'
-import Link from 'next/link'
+"use client";
+
+import React from "react";
+import c from "./Navbar.module.css";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export const Navbar = () => {
+  const pathname = usePathname();
+
+  const navItems = [
+    { href: "/", label: "Home" },
+    { href: "/events", label: "Events" },
+    { href: "/info", label: "Info" },
+  ];
+
   return (
-    <div className={c.navbar}>
+    <nav className={c.navbar}>
       <ul className={c.navList}>
-        <li>
-          <Link href="/" className={c.navLink}>
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link href="/events" className={c.navLink}>
-            Events
-          </Link>
-        </li>
-        <li>
-          <Link href="/info" className={c.navLink}>
-            Info
-          </Link>
-        </li>
+        {navItems.map(({ href, label }) => {
+          const isActive =
+            pathname === href || (href !== "/" && pathname.startsWith(href));
+
+          return (
+            <li key={href}>
+              <Link href={href} className={c.navLink} data-active={isActive}>
+                {label}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
-    </div>
+    </nav>
   );
-}
+};

@@ -1,21 +1,87 @@
 .navbar {
-
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 .navList {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    gap: 16px;
-    margin-right: 50px;
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 24px;
+  align-items: center;
 }
 
 .navLink {
-    font-size: 24px;
-    color: #333;
-    text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #f9fafb;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 150ms ease-in-out;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .navLink:hover {
-    text-decoration: underline;
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.1);
+  transform: translateY(-1px);
+}
+
+.navLink:active {
+  transform: translateY(0);
+}
+
+.navIcon {
+  font-size: 1.1em;
+  line-height: 1;
+}
+
+.navLink[data-active="true"] {
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.1);
+  font-weight: 600;
+}
+
+.navLink[data-active="true"]::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 16px;
+  right: 16px;
+  height: 2px;
+  background: #2563eb;
+  border-radius: 1px;
+}
+
+@media (max-width: 768px) {
+  .navList {
+    gap: 16px;
+  }
+
+  .navLink {
+    font-size: 1.2rem;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navList {
+    gap: 8px;
+  }
+
+  .navLink {
+    font-size: 1.2rem;
+    padding: 4px;
+    gap: 4px;
+  }
+
+  .navIcon {
+    font-size: 1em;
+  }
 }
