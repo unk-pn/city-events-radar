@@ -3,7 +3,7 @@
 	<em>Discover amazing events happening in your city and beyond with this modern React-based events discovery platform</em>
 </p>
 <p align="center">
-	<a href="https://city-events-radar.vercel.app/events" target="_blank">
+	<a href="https://city-events-radar.vercel.app" target="_blank">
 		<img src="https://img.shields.io/badge/🌐_Live_Demo-Visit_Site-4285f4?style=for-the-badge&logoColor=white" alt="Live Demo">
 	</a>
 </p>
@@ -31,7 +31,7 @@
 
 ## Live Demo
 
-**🚀 [Visit City Events Radar](https://city-events-radar.vercel.app/events)**
+**🚀 [Visit City Events Radar](https://city-events-radar.vercel.app)**
 
 Experience the application live! Browse real events, test the filtering system, and explore the responsive design across different devices.
 
@@ -387,7 +387,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-**🌐 Or try the live demo**: [City Events Radar](https://city-events-radar.vercel.app/events)
+**🌐 Or try the live demo**: [City Events Radar](https://city-events-radar.vercel.app)
 
 **Environment Setup:**
 Create a `.env.local` file in the root directory and add your Ticketmaster API configuration:
